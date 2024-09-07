@@ -2,7 +2,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Review
+from .models import Review,Book
 
 class RegistrationForm(UserCreationForm):
     name = forms.CharField(required=True)
@@ -41,4 +41,4 @@ class ReviewForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_show_labels = False
 
-    
+

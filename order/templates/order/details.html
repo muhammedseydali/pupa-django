@@ -18,7 +18,7 @@
 					        <tbody class="text-center">
 					        	{% for item in o_item %}
 					            <tr>
-					                <td class="cart_coverpage"><a href=""><img src="{{ item.book.coverpage.url}}"></a></td>
+					                <td class="cart_coverpage"><a href="{% url 'store:book' id=item.book.id %}"><img src="{{ item.book.coverpage.url}}"></a></td>
 					                <td><a href="{% url 'store:book' id=item.book.id %}">{{ item.book.name }}</a></td>
 					                <td class="cart_quantity">{{ item.book.price }} $.</td>
 					                <td class="cart_quantity">{{ item.quantity }}</td>

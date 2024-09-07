@@ -9,37 +9,43 @@ from .forms import OrderCreateForm
 from .pdfcreator import renderPdf
 
 def order_create(request):
-	cart = Cart(request)
-	if request.user.is_authenticated:
-		customer = get_object_or_404(User, id=request.user.id)
-		form = OrderCreateForm(request.POST or None, initial={"name": customer.first_name, "email": customer.email})
-		if request.method == 'POST':
-			if form.is_valid():
-				order = form.save(commit=False)
-				order.customer = User.objects.get(id=request.user.id)
-				order.payable = cart.get_total_price()
-				order.totalbook = len(cart) # len(cart.cart) // number of individual book
-				order.save()
+    cart = Cart(request)
+    if request.user.is_authenticated:
+        customer = get_object_or_404(User, id=request.user.id)
+        form = OrderCreateForm(request.POST or None, initial={"name": customer.first_name, "email": customer.email})
+        
+        if request.method == 'POST':
+            if form.is_valid():
+                order = form.save(commit=False)
+                order.customer = User.objects.get(id=request.user.id)
+                order.payable = cart.get_total_price()
+                order.totalbook = len(cart)  # Number of books in the cart
+                order.save()
 
-				for item in cart:
-					OrderItem.objects.create(
-						order=order, 
-						book=item['book'], 
-						price=item['price'], 
-						quantity=item['quantity']
-						)
-				cart.clear()
-				return render(request, 'order/successfull.html', {'order': order})
+                # Create order items
+                for item in cart:
+                    OrderItem.objects.create(
+                        order=order, 
+                        book=item['book'], 
+                        price=item['price'], 
+                        quantity=item['quantity']
+                    )
+                
+                # Get all order items for the created order
+                order_items = OrderItem.objects.filter(order=order)
 
-			else:
-				messages.error(request, "Fill out your information correctly.")
+                cart.clear()
+                return render(request, 'order/successfulll.html', {'order': order, 'order_items': order_items})
 
-		if len(cart) > 0:
-			return render(request, 'order/order.html', {"form": form})
-		else:
-			return redirect('store:books')
-	else:
-		return redirect('store:signin')
+            else:
+                messages.error(request, "Fill out your information correctly.")
+
+        if len(cart) > 0:
+            return render(request, 'order/order.html', {"form": form})
+        else:
+            return redirect('store:books')
+    else:
+        return redirect('store:signin')
 			
 def order_list(request):
 	my_order = Order.objects.filter(customer_id = request.user.id).order_by('-created')

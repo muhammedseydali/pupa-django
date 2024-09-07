@@ -20,18 +20,19 @@ def index(request):
 def signin(request):
     if request.user.is_authenticated:
         return redirect('store:index')
-    else:
-        if request.method == "POST":
-            user = request.POST.get('user')
-            password = request.POST.get('pass')
-            auth = authenticate(request, username=user, password=password)
-            if auth is not None:
-                login(request, auth)
-                return redirect('store:index')
-            else:
-            	messages.error(request, 'username and password doesn\'t match')
-
-    return render(request, "store/login.html")	
+    
+    if request.method == "POST":
+        user = request.POST.get('user')
+        password = request.POST.get('pass')
+        auth = authenticate(request, username=user, password=password)
+        
+        if auth is not None:
+            login(request, auth)
+            return redirect('store:index')
+        else:
+            messages.error(request, 'Username and password do not match')
+    
+    return render(request, "store/login.html")
 
 
 def signout(request):

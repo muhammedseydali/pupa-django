@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'search.apps.SearchConfig',
     'order.apps.OrderConfig',
     'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 
@@ -158,7 +159,9 @@ MESSAGE_TAGS = {
     messages.DEBUG: 'alert alert-info',
 }
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# Specify Bootstrap 4 template pack for Crispy Forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
