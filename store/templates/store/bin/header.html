@@ -19,24 +19,25 @@
 				<div class="pull-right">
 					<ul class="navbar-nav">
 						{% if request.user.is_authenticated %}
-					    <li class="dropdown profile"><a href="#">{{ request.user.username }}</a>
+					    <li class="dropdown profile">
+					    	<a href="#"><i class="fa fa-user-circle-o"></i> {{ request.user.username }}</a>
 					        <ul role="menu" class="sub-menu">
-					            <li><a href="{% url 'order:order_list' %}"><i class="fa fa-shopping-cart"></i> My order</a></li>
-					            <li><a href="{% url 'store:signout' %}"><i class="fa fa-sign-out"></i> Sing Out</a></li>
+					            <li><a href="{% url 'order:order_list' %}"><i class="fa fa-shopping-bag"></i> My Orders</a></li>
+					            <li><a href="{% url 'store:signout' %}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 					        </ul> 
 					    </li>
 					    <li class="cart">
-					    	<a href="{% url 'cart:cart_details' %}">Cart <i class="fa fa-angle-left"></i>
-					    		<span class="totalcart" id="gettotalcart"> {{ cart|length }} </span> 
-					    		<i class="fa fa-angle-right"></i>
+					    	<a href="{% url 'cart:cart_details' %}"><i class="fa fa-shopping-cart"></i> Cart
+					    		<span class="totalcart" id="gettotalcart">{{ cart|length }}</span> 
 					    	</a>
 					    </li>
 					    {% else %}
-					    <li class="profile"><a href="{% url 'store:signin' %}">Sign In</a></li>
+					    <li class="profile">
+					    	<a href="{% url 'store:signin' %}"><i class="fa fa-user-circle-o"></i> Sign In</a>
+					    </li>
 					    <li class="cart">
-					    	<a href="{% url 'cart:cart_details' %}">Cart <i class="fa fa-angle-left"></i>
-					    		<span class="totalcart" id="gettotalcart"> {{ cart|length }} </span> 
-					    		<i class="fa fa-angle-right"></i>
+					    	<a href="{% url 'cart:cart_details' %}"><i class="fa fa-shopping-cart"></i> Cart
+					    		<span class="totalcart" id="gettotalcart">{{ cart|length }}</span> 
 					    	</a>
 					    </li>
 					    {% endif %}
@@ -93,12 +94,27 @@
 	color: #333;
 	font-weight: 500;
 	margin-right: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.profile i {
+	margin-right: 8px;
+	color: #007bff;
+	font-size: 18px;
 }
 
 .cart a {
 	color: #333;
 	display: flex;
 	align-items: center;
+	font-weight: 500;
+}
+
+.cart i {
+	margin-right: 5px;
+	color: #007bff;
+	font-size: 18px;
 }
 
 .cart .totalcart {
