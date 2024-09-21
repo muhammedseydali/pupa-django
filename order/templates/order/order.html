@@ -32,18 +32,6 @@
                 <div class="mb-3">
                     {{ form.address|as_crispy_field }}
                 </div>
-
-                <div class="row">
-                    <div class="col-md-5 mb-3">
-                        {{ form.division|as_crispy_field }}
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        {{ form.district|as_crispy_field }}
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        {{ form.zip_code|as_crispy_field }}
-                    </div>
-                </div>
                 <hr class="mb-4">
                 <div class="d-block my-3">
                     {{ form.payment_method|as_crispy_field }}
@@ -70,13 +58,13 @@
                     Books <span>{{ cart|length }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Subtotal <span>{{ cart.get_total_price }} $.</span>
+                    Subtotal <span>{{ cart.get_total_price }} AED.</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Shipping <span>{{ cost|shipping }} $.</span>
+                    Shipping <span>{{ cost|shipping }} AED.</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Payable Total <span>{{ cart.get_total_price|payabletotal }} $.</span>
+                    Payable Total <span>{{ cart.get_total_price|payabletotal }} AED.</span>
                 </li>
             </ul>
         </div>

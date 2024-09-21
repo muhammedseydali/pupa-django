@@ -20,7 +20,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td><a href="{% url 'order:order_details' id=morder.id %}">{{ morder.id }}</a></td>
                     <td>{{ morder.customer.username }}</td> <!-- Display Username -->
-                    <td>{{ morder.payable }} $.</td>
+                    <td>{{ morder.payable }} AED.</td>
                     <td>{{ morder.total_books }}</td>
                     <td class="text-center">
                         {% if morder.paid %}

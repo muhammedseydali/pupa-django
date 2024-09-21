@@ -7,13 +7,27 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .forms import RegistrationForm, ReviewForm
 
 
+# def index(request):
+#     newpublished = Book.objects.order_by('-created')[:15]
+#     slide = Slider.objects.order_by('-created')[:3]
+#     context = {
+#         "newbooks":newpublished,
+#         "slide": slide
+#     }
+#     return render(request, 'store/index.html', context)
 def index(request):
-    newpublished = Book.objects.order_by('-created')[:15]
-    slide = Slider.objects.order_by('-created')[:3]
+    top_selling = Book.objects.filter(top_selling=True)[:15]  # Trending books
+    popular_books = Book.objects.filter(popular_book=True)[:15]  # Popular books
+    upcoming_books = Book.objects.filter(upcoming_book=True)[:15]  # Upcoming books
+    slide = Slider.objects.order_by('-created')[:3]  # Slider content
+    
     context = {
-        "newbooks":newpublished,
+        "trending_books": top_selling,
+        "popular_books": popular_books,
+        "upcoming_books": upcoming_books,
         "slide": slide
     }
+    
     return render(request, 'store/index.html', context)
 
 
@@ -44,7 +58,7 @@ def registration(request):
 	form = RegistrationForm(request.POST or None)
 	if form.is_valid():
 		form.save()
-		return redirect('store:signin')
+		return redirect('store:index')
 
 	return render(request, 'store/signup.html', {"form": form})
 

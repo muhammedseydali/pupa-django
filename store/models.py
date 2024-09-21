@@ -38,6 +38,10 @@ class Book(models.Model):
 	status = models.IntegerField(default=0)
 	description = models.TextField()
 
+	top_selling = models.BooleanField(default=False)
+	popular_book = models.BooleanField(default=False)
+	upcoming_book = models.BooleanField(default=False)
+
 	def __str__(self):
 	    return self.name
 
