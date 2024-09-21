@@ -6,7 +6,7 @@
         <div class="col-md-8 cart_info">
             <!-- Add a logo at the top -->
             <div class="text-center mb-4">
-                <img src="{% static 'images/logo.png' %}" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                <img src="{% static 'images/logo/pupa-112x59.jpg' %}" alt="Logo" class="img-fluid" style="max-width: 150px;">
             </div>
 
             <div class="successful-order text-center">
@@ -51,16 +51,12 @@
                             <td>{{ order.email }}</td>
                         </tr>
                         <tr>
-                            <th>Account No</th>
-                            <td>{{ order.account_no }}</td>
-                        </tr>
-                        <tr>
                             <th>Payment Method</th>
                             <td>{{ order.payment_method }}</td>
                         </tr>
                         <tr>
                             <th>Shipping Address</th>
-                            <td>{{ order.division }}:{{ order.zip_code }}, {{ order.district }}, {{ order.address }}</td>
+                            <td>{{ order.address }}</td>
                         </tr>
                     </tbody>
                 </table>

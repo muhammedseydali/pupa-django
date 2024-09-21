@@ -49,7 +49,7 @@
 								{{ item.totalrating|averagerating:item.totalreview }}
 								<span class="totalrating">{{ item.totalreview|add:-1 }}</span>
 							</div>
-							<p> {{ item.price }} $.</p>
+							<p> {{ item.price }} AED.</p>
 							<button class="btn btn-warning" id="addTocart" data-book-id="{{ item.id }}">
 									<i class="fa fa-shopping-cart""></i>Add to cart
 								</button>
@@ -74,7 +74,7 @@
 								{{ p.totalrating|averagerating:p.totalreview }}
 								<span class="totalrating">{{ p.totalreview|add:-1 }}</span>
 							</div>
-							<p> ${{ p.price }} $.</p>
+							<p> AED{{ p.price }} AED.</p>
 							<button class="btn btn-warning" id="addTocart" data-book-id="{{ p.id }}">
 									<i class="fa fa-shopping-cart""></i>Add to cart
 								</button>

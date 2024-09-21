@@ -21,7 +21,7 @@
                 <h5>Email: <span>{{ order.email }}</span></h5>
                 <h5>Account No: <span>{{ order.account_no }}</span></h5>
                 <h5>Payment Method: <span>{{ order.payment_method }}</span></h5>
-                <h5>Shipping address: <span>{{ order.division }}:{{ order.zip_code }}, {{ order.district }}, {{ order.address }}</span></h5>
+                <h5>Shipping address: <span> {{ order.district }}, {{ order.address }}</span></h5>
             </div>
             <div class="download-info">
                 <a href="{% url 'order:pdf' id=order.id %}">
