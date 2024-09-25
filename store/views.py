@@ -55,12 +55,21 @@ def signout(request):
 
 
 def registration(request):
-	form = RegistrationForm(request.POST or None)
-	if form.is_valid():
-		form.save()
-		return redirect('store:index')
-
-	return render(request, 'store/signup.html', {"form": form})
+    form = RegistrationForm(request.POST or None)
+    if form.is_valid():
+        user = form.save()  # Save the new user
+        messages.success(request, 'Registration successful! You are now logged in.')
+        
+        # Automatically log the user in
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password1')  # Assuming you're using a password1 field in your form
+        auth_user = authenticate(username=username, password=raw_password)
+        
+        if auth_user is not None:
+            login(request, auth_user)  # Log the user in
+            return redirect('store:index')  # Redirect to index page
+        
+    return render(request, 'store/signup.html', {"form": form})
 
 def payment(request):
     return render(request, 'store/payment.html')
