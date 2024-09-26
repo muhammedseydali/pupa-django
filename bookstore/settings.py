@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from decouple import config
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,9 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#*k)9t8vzu)4j2hr=l@)emxs^ev%6z5)ri$q4g4%nb^n+pr37y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['pupapublications.com', 'https://pupapublications.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -164,6 +165,3 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-RAZOR_KEY_ID="rzp_test_uc606wbkGiY9tH"
-RAZOR_KEY_SECRET="1VZlTWgptSVAsM3Ih0VLdsMD"
