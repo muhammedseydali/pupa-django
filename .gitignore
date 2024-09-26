@@ -1,0 +1,77 @@
+# Python
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+share/python-wheels/
+*.manifest
+*.spec
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+
+# Virtualenv
+env/
+venv/
+ENV/
+VENV/
+env.bak/
+venv.bak/
+
+# Django secret key
+.env
+*.env
+
+# Media files
+media/
+staticfiles/
+
+# Migrations
+**/migrations/**/000*.py
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+*.cover
+*.log
+local_settings.py
+
+# OSX
+.DS_Store
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# MySQL
+*.sql
+*.tar
